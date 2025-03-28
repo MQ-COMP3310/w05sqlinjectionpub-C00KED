@@ -10,6 +10,11 @@ import java.io.FileInputStream;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,6 +27,7 @@ public class App {
         // loads logging.properties from the classpath
         try {// resources\logging.properties
             LogManager.getLogManager().readConfiguration(new FileInputStream("resources/logging.properties"));
+
         } catch (SecurityException | IOException e1) {
             e1.printStackTrace();
         }
@@ -73,6 +79,8 @@ public class App {
             System.out.print("Enter a 4 letter word for a guess or q to quit: ");
             String guess = scanner.nextLine();
 
+            
+
             while (!guess.equals("q")) {
                 System.out.println("You've guessed '" + guess+"'.");
 
@@ -84,10 +92,14 @@ public class App {
 
                 System.out.print("Enter a 4 letter word for a guess or q to quit: " );
                 guess = scanner.nextLine();
+
+                
             }
         } catch (NoSuchElementException | IllegalStateException e) {
             e.printStackTrace();
         }
-
+        
+        logger.log(Level.INFO,"The 'Hello, World' program runs");
+        System.out.println("Hello, World!");
     }
 }
